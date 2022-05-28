@@ -3,7 +3,6 @@ import { getPosts, createPost, updatePost, deletePost, likePost } from "../contr
 
 const router = express.Router()
 
-// router
 router.get('/', getPosts)
 router.post('/', createPost)
 router.patch('/:id', updatePost)
