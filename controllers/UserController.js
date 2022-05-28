@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/user";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 
 export const signin = async (req, res) => {
@@ -22,7 +22,7 @@ export const signin = async (req, res) => {
 }
 
 export const signup = async (req, res) => {
-    const { email, password, confirmPassword, firtName, lastName } = req.body
+    const { email, password, confirmPassword, firstName, lastName } = req.body
 
     try {
         const existingUser = await User.findOne({ email })
@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 12)
 
-        const result = await User.create({ email, password: hashPassword, name: `${firstname} ${lastName}` })
+        const result = await User.create({ email, password: hashPassword, name: `${firstName} ${lastName}` })
         const token = jwt.sign({ email: result.email, id: result._id }, 'zaki', { expiresIn: '1h' })
 
         res.status(200).json({ result: result, token })
