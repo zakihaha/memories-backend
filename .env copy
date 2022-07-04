@@ -1,0 +1,2 @@
+PORT = 5000
+CONNECTION_URL = mongodb+srv://zakich:LyhNV84pBsLK84Tr@cluster0.wgdv9.mongodb.net/memories?retryWrites=true&w=majority
